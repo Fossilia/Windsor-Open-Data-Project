@@ -11,6 +11,7 @@ public class Menu {
 
     public static void main(String[] args) throws IOException {
 
+    	//Creating groups
 	    Group education = new Group("Education");
 	    groups.add(education);
 		Group law = new Group("Law");
@@ -20,33 +21,45 @@ public class Menu {
 		Group publicFacilities = new Group("Public Facilities");
 		groups.add(publicFacilities);
 
+		//creating elements
 	    DataElement schools = new Schools();
+	    schools.loadFiles();
 		DataElement universities = new Universities();
 		DataElement colleges = new Colleges();
 		DataElement libraries = new Libraries();
 
+		//adding elements to groups
 	    education.addElement(schools);
 		education.addElement(universities);
 		education.addElement(colleges);
 
 		publicFacilities.addElement(libraries);
 
-		displayGroupMenu();
+		displayGroupMenu(); //start the menu
     }
 
-    public static void displayGroupMenu() throws IOException {
+	/**
+	 * Displays the group menu then gets user input for groups, data elements, and files to open
+	 * @throws IOException
+	 */
+	public static void displayGroupMenu() throws IOException {
 		System.out.println("Welcome to the Windsor Open Data Project!");
 		System.out.println("------------------------------------------");
 		System.out.println("Please choose what data group you want to view (type in a groups number):");
-		for(int i=1; i<=groups.size(); i++){
+		for(int i=1; i<=groups.size(); i++){ //print all groups
 			System.out.println(i+". "+groups.get(i-1).getName());
 		}
-		int choice = getIntInput(1, groups.size());
+
+		int choice = getIntInput(1, groups.size()); //get input for group
 		Group chosenGroup = groups.get(choice-1);
 		chosenGroup.display();
-		choice = getIntInput(1, chosenGroup.getElements().size());
+
+		choice = getIntInput(1, chosenGroup.getElements().size()); //element
 		DataElement chosenDataElement = chosenGroup.getElement(choice-1);
 		System.out.println(chosenDataElement);
+
+		System.out.println("\nPlease choose what file you want to open (type in a files number):");
+		chosenDataElement.printFiles(); //files for element
 		choice = getIntInput(1, chosenDataElement.getFiles().size());
 		chosenDataElement.openFile(choice-1);
 	}
@@ -77,4 +90,5 @@ public class Menu {
 		}
 		return input;
 	}
+
 }
