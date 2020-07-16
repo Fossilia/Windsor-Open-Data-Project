@@ -24,4 +24,12 @@ public class Group {
     public ArrayList<DataElement> getElements() {
         return elements;
     }
+
+    public void display(){
+        System.out.println("You picked the "+name+" group, these are the data elements in the group (type in a data elements number):");
+        for(int i=1; i<=elements.size(); i++){
+            System.out.println(i+". "+elements.get(i-1).getName());
+        }
+
+    }
 }
