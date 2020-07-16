@@ -50,18 +50,18 @@ public class Menu {
 			System.out.println(i+". "+groups.get(i-1).getName());
 		}
 
-		int choice = getIntInput(1, groups.size()); //get input for group
+		int choice = getIntInput(1, groups.size()); //get input for for group
 		Group chosenGroup = groups.get(choice-1);
 		chosenGroup.display();
 
-		choice = getIntInput(1, chosenGroup.getElements().size()); //element
+		choice = getIntInput(1, chosenGroup.getElements().size()); //gets input for element
 		DataElement chosenDataElement = chosenGroup.getElement(choice-1);
 		System.out.println(chosenDataElement);
 
 		System.out.println("\nPlease choose what file you want to open (type in a files number):");
-		chosenDataElement.printFiles(); //files for element
+		chosenDataElement.printFiles(); //get input for file the user wants to open
 		choice = getIntInput(1, chosenDataElement.getFiles().size());
-		chosenDataElement.openFile(choice-1);
+		chosenDataElement.openFile(choice-1); //open file
 	}
 
 	/**gets an integer from the user between min and max (inclusive), checks for exceptions*/

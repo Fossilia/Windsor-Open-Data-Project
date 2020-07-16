@@ -1,3 +1,7 @@
+/**
+ * holds a bunch of data elements
+ */
+
 package com.fossilia;
 
 import java.util.ArrayList;
