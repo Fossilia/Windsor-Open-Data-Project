@@ -1,6 +1,8 @@
 package com.fossilia;
 
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class DataElement {
@@ -13,11 +15,22 @@ public class DataElement {
     static int counter;
     int id;
 
-    public void display(){
+    public DataElement(){
+        files = new ArrayList<>();
+    }
+    @Override
+    public String toString() {
+        return "Name: " + name +
+                "\n\nLast updated: " + date +
+                "\n\nDescription: " + description +
+                "\n\nTags: " + tags +
+                "\n\nFiles: " + files +
+                "\n\n Please type in the number ";
 
     }
 
-    public void openFile(int choice){
+    public void openFile(int choice) throws IOException {
+        Desktop.getDesktop().open(files.get(choice));
 
     }
 

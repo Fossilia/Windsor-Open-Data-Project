@@ -1,5 +1,6 @@
 package com.fossilia;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -8,7 +9,7 @@ public class Menu {
 	static ArrayList<Group> groups = new ArrayList<>();
 	public static final Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
 	    Group education = new Group("Education");
 	    groups.add(education);
@@ -33,7 +34,7 @@ public class Menu {
 		displayGroupMenu();
     }
 
-    public static void displayGroupMenu(){
+    public static void displayGroupMenu() throws IOException {
 		System.out.println("Welcome to the Windsor Open Data Project!");
 		System.out.println("------------------------------------------");
 		System.out.println("Please choose what data group you want to view (type in a groups number):");
@@ -41,7 +42,13 @@ public class Menu {
 			System.out.println(i+". "+groups.get(i-1).getName());
 		}
 		int choice = getIntInput(1, groups.size());
-		groups.get(choice-1).display();
+		Group chosenGroup = groups.get(choice-1);
+		chosenGroup.display();
+		choice = getIntInput(1, chosenGroup.getElements().size());
+		DataElement chosenDataElement = chosenGroup.getElement(choice-1);
+		System.out.println(chosenDataElement);
+		choice = getIntInput(1, chosenDataElement.getFiles().size());
+		chosenDataElement.openFile(choice-1);
 	}
 
 	/**gets an integer from the user between min and max (inclusive), checks for exceptions*/
