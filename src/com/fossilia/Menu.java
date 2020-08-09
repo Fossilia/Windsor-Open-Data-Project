@@ -10,10 +10,14 @@ public class Menu {
 	public static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
+    	createGroups();
+		displayGroupMenu(); //start the menu
+    }
 
-    	//Creating groups
-	    Group education = new Group("Education");
-	    groups.add(education);
+    public static void createGroups(){
+		//Creating groups
+		Group education = new Group("Education");
+		groups.add(education);
 		Group law = new Group("Law");
 		groups.add(law);
 		Group agriculture = new Group("Agriculture");
@@ -22,21 +26,19 @@ public class Menu {
 		groups.add(publicFacilities);
 
 		//creating elements
-	    DataElement schools = new Schools();
-	    schools.loadFiles();
+		DataElement schools = new Schools();
+		schools.loadFiles();
 		DataElement universities = new Universities();
 		DataElement colleges = new Colleges();
 		DataElement libraries = new Libraries();
 
 		//adding elements to groups
-	    education.addElement(schools);
+		education.addElement(schools);
 		education.addElement(universities);
 		education.addElement(colleges);
 
 		publicFacilities.addElement(libraries);
-
-		displayGroupMenu(); //start the menu
-    }
+	}
 
 	/**
 	 * Displays the group menu then gets user input for groups, data elements, and files to open
