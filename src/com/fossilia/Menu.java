@@ -2,6 +2,7 @@ package com.fossilia;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -39,8 +40,9 @@ public class Menu {
 		education.addElement(universities);
 		education.addElement(colleges);
 
-		dataElements.add(schools);
 		dataElements.add(universities);
+		dataElements.add(schools);
+		dataElements.add(libraries);
 		dataElements.add(colleges);
 
 		publicFacilities.addElement(libraries);
@@ -66,19 +68,29 @@ public class Menu {
 			System.out.println("3. total file size");
 
 			choice = getIntInput(1, 3);
-			if(choice == 1){
 
+			if(choice == 1){
+				System.out.println("List was sorted by Name.");
 			}
 			else if(choice == 2){
-
+				System.out.println("List was sorted by popularity.");
+				Collections.sort(dataElements, new ElementSortByPopularity());
 			}
 			else{
-
+				System.out.println("List was sorted by total file size.");
+				Collections.sort(dataElements, new ElementSortByFileSize());
 			}
+			System.out.println("PLease choose what data element you want to view:");
+			printData(dataElements);
+			choice = getIntInput(1, dataElements.size()); //gets input for element
+			DataElement chosenDataElement = dataElements.get(choice-1);
+			System.out.println(chosenDataElement);
 
-			for(int i=0; i<dataElements.size(); i++){
-				System.out.println((i+1)+". "+dataElements.get(i).getName());
-			}
+			System.out.println("\nPlease choose what file you want to open (type in a files number):");
+			chosenDataElement.printFiles(); //get input for file the user wants to open
+			choice = getIntInput(1, chosenDataElement.getFiles().size());
+			chosenDataElement.openFile(choice-1); //open file
+			getRating();
 		}
 		else{
 			System.out.println("Please choose what data group you want to view (type in a groups number):");
@@ -99,6 +111,12 @@ public class Menu {
 			choice = getIntInput(1, chosenDataElement.getFiles().size());
 			chosenDataElement.openFile(choice-1); //open file
 			getRating();
+		}
+	}
+
+	public static void printData(ArrayList<DataElement> list){
+		for(int i=0; i<list.size(); i++){
+			System.out.println((i+1)+". "+list.get(i).getName());
 		}
 	}
 

@@ -60,8 +60,10 @@ public class DataElement {
      */
     public int getTotalFileSize(){
         int total = 0;
-        for(File f: files){
-            total+= files.size();
+        if(files!=null){
+            for(File f: files){
+                total+= files.size();
+            }
         }
         return total;
     }
