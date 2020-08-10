@@ -12,6 +12,7 @@ public class DataElement {
     String date;
     String description;
     String tags;
+    int clicks = 0;
     ArrayList<File> files;
     static int counter;
     int id;
@@ -87,5 +88,13 @@ public class DataElement {
 
     public int getId() {
         return id;
+    }
+
+    public int getClicks() {
+        return clicks;
+    }
+
+    public void setClicks(int clicks) {
+        this.clicks = clicks;
     }
 }
