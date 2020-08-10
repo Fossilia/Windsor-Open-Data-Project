@@ -53,6 +53,18 @@ public class DataElement {
         }
     }
 
+    /**
+     * gets the total of the size of all the files attached to the data element
+     * @return the total file size
+     */
+    public int getTotalFileSize(){
+        int total = 0;
+        for(File f: files){
+            total+= files.size();
+        }
+        return total;
+    }
+
     public String getName() {
         return name;
     }
