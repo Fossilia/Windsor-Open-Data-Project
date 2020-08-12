@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Windsor-Open-Data-Project:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Windsor_Open_Data_Project_jar</output-path>
+    <root id="archive" name="Windsor-Open-Data-Project.jar">
+      <element id="module-output" name="Windsor-Open-Data-Project" />
+    </root>
+  </artifact>
+</component>

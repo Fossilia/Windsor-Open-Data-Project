@@ -8,11 +8,11 @@ import java.util.Objects;
 
 public class DataElement {
 
-    String name;
+    public String name;
     String date;
     String description;
     String tags;
-    int clicks = 0;
+    public int clicks = 0;
     ArrayList<File> files;
     static int counter;
     int id;

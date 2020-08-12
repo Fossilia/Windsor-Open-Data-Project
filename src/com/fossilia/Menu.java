@@ -1,5 +1,9 @@
 package com.fossilia;
 
+import com.fossilia.Sorter.ElementSortByFileSize;
+import com.fossilia.Sorter.ElementSortByName;
+import com.fossilia.Sorter.ElementSortByPopularity;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,8 +45,8 @@ public class Menu {
 		education.addElement(colleges);
 
 		dataElements.add(universities);
-		dataElements.add(schools);
 		dataElements.add(libraries);
+		dataElements.add(schools);
 		dataElements.add(colleges);
 
 		publicFacilities.addElement(libraries);
@@ -71,6 +75,7 @@ public class Menu {
 
 			if(choice == 1){
 				System.out.println("List was sorted by Name.");
+				Collections.sort(dataElements, new ElementSortByName());
 			}
 			else if(choice == 2){
 				System.out.println("List was sorted by popularity.");

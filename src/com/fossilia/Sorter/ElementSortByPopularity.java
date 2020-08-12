@@ -1,4 +1,6 @@
-package com.fossilia;
+package com.fossilia.Sorter;
+
+import com.fossilia.DataElement;
 
 import java.util.Comparator;
 
